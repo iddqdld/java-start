@@ -5,6 +5,6 @@ public class comptenbpair {
                 System.out.println(x);
             }
         }
-    }
-    
+    }    
+
 }

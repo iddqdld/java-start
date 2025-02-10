@@ -1,8 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        car Toyota = new car();
-        Toyota.demarrer();
-        Toyota.accelerer();  
-        Toyota.freiner();
+        Car toyota = new Car("toyota", "corolla", "rouge");
+        System.out.println(toyota.getMarque() + " " + toyota.getModele() + " " + toyota.getCouleur());
+
+        for (String color : toyota.coloarAutorized) {
+            System.out.println(color);
+        }
     }
 }

@@ -3,7 +3,7 @@ public class Car {
     private String modele;
     private String couleur;
 
-    public String[] coloarAutorized = {"rouge", "bleu", "vert"};
+    public static String[] coloarAutorized = {"rouge", "bleu", "vert"};
 
     public Car(String marque, String modele, String couleur) {
         this.marque = marque;

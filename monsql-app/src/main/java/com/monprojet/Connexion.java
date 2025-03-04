@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connexion {
-    String url = "jdbc:mysql://localhost:3306/monprojet";
+    String url = "jdbc:mysql://localhost:3306/mydbjava";
     String utilisateur = "root";
     String motDePasse = "";
     Connection connexion = null;
@@ -24,7 +24,7 @@ public class Connexion {
         if (this.connexion != null) {
             try {
                 this.connexion.close();
-                System.out.println("Connexion fermée");
+                System.out.println("Connexion fermee");
             } catch (SQLException e) {
                 System.err.println("Erreur lors de la fermeture de la connexion : " + e.getMessage());
             }

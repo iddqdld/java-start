@@ -14,7 +14,12 @@ public class GestionUtilisateurs {
         this.link = plink;
     }
 
-    public void listUtilisateur () {
+    public void listUtilisateur() {
+        if (this.link.connexion == null) {
+            System.err.println("Error: Database connection is not established");
+            return;
+        }
+        
         try {
             Statement stmt = this.link.connexion.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id, nom, email FROM utilisateurs");
@@ -27,10 +32,8 @@ public class GestionUtilisateurs {
             }
         } catch (SQLException e) {
             System.err.println("Erreur lors de la récupération des utilisateurs : " + e.getMessage());
-
         }
     }
-
     public void addUser(String nom, String email) {
         try {
             String query = "INSERT INTO utilisateurs (nom, email) VALUES (?, ?)";

@@ -5,29 +5,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connexion {
-    public static void main(String[] args) {
-        // Informations de connexion
-        String url = "jdbc:mysql://localhost:3306/maBase"; // Remplacer "maBase" par le nom de votre base
-        String utilisateur = "root";
-        String motDePasse = "password";
-        Connection connexion = null;
-
+    String url = "jdbc:mysql://localhost:3306/monprojet";
+    String utilisateur = "root";
+    String motDePasse = "";
+    Connection connexion = null;
+    
+    public Connexion () {
         try {
-            // Établir la connexion
-            connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
-            System.out.println("Connexion réussie !");
-            
+            this.connexion = DriverManager.getConnection(this.url, this.utilisateur, this.motDePasse);
+            System.out.println("Connexion établie");
+
         } catch (SQLException e) {
-            System.out.println("Erreur de connexion : " + e.getMessage());
-        } finally { // Toujours fermer la connexion pour éviter les fuites de ressources 
-	        if (connexion != null) { 
-		        try { 
-			        connexion.close(); 
-			        System.out.println("Connexion fermée avec succès."); 
-			    } catch (SQLException e) { 
-				    System.err.println("Erreur lors de la fermeture de la connexion : " + e.getMessage()); 
-				} 
-			} 
-		}
+            System.err.println("Erreur lors de la connexion : " + e.getMessage());
+        }
+    }
+
+    public void close() {
+        if (this.connexion != null) {
+            try {
+                this.connexion.close();
+                System.out.println("Connexion fermée");
+            } catch (SQLException e) {
+                System.err.println("Erreur lors de la fermeture de la connexion : " + e.getMessage());
+            }
+        }
     }
 }

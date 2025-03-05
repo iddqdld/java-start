@@ -13,7 +13,7 @@ public class Connexion {
     public Connexion () {
         try {
             this.connexion = DriverManager.getConnection(this.url, this.utilisateur, this.motDePasse);
-            System.out.println("Connexion établie");
+            System.out.println("Connexion etablie");
 
         } catch (SQLException e) {
             System.err.println("Erreur lors de la connexion : " + e.getMessage());

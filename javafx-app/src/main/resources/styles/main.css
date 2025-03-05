@@ -1,0 +1,11 @@
+.root {
+    -fx-background-image: url("/images/smile.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.label {
+    -fx-text-fill: red;
+}

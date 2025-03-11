@@ -1,10 +1,10 @@
 .root {
-    -fx-background-image: url("/images/smile.jpg");
+    -fx-background-image: url("/styles/images/smile.jpg");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 
-    background-image: url("/images/smile.jpg");
+    background-image: url("/styles/images/smile.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

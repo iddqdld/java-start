@@ -92,6 +92,53 @@ public class GestionUtilisateur {
         return utilisateurs;
     }
 
+    public List<Utilisateur> rechercherUtilisateurs(String searchField, String searchValue) {
+    List<Utilisateur> utilisateurs = new ArrayList<>();
+    String query = "SELECT * FROM utilisateurs WHERE ";
+    
+    // Validate search field
+    switch (searchField.toLowerCase()) {
+        case "id":
+            query += "id = ?";
+            break;
+        case "email":
+            query += "email LIKE ?";
+            break;
+        case "nom":
+            query += "nom LIKE ?";
+            break;
+        default:
+            throw new IllegalArgumentException("Champ de recherche invalide. Utilisez 'id', 'email' ou 'nom'");
+    }
+    
+    try (PreparedStatement statement = dbConnexion.connexion.prepareStatement(query)) {
+        // Set parameter based on search field type
+        if (searchField.equalsIgnoreCase("id")) {
+            try {
+                statement.setInt(1, Integer.parseInt(searchValue));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("L'ID doit être un nombre entier");
+            }
+        } else {
+            // For email and nom, use LIKE with wildcards
+            statement.setString(1, "%" + searchValue + "%");
+        }
+        
+        try (ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String email = resultSet.getString("email");
+                String nom = resultSet.getString("nom");
+                utilisateurs.add(new Utilisateur(id, email, nom));
+            }
+        }
+    } catch (SQLException e) {
+        System.err.println("Erreur lors de la recherche : " + e.getMessage());
+    }
+    
+    return utilisateurs;
+    }
+
     public void closeConnection() {
         if (dbConnexion != null) {
             dbConnexion.close();

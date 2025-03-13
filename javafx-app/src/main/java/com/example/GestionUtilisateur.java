@@ -65,7 +65,7 @@ public class GestionUtilisateur {
             statement.setString(2, nom);
             statement.setInt(3, id);
             statement.executeUpdate();
-            System.out.println("Utilisateur mis à jour : " + id + ", " + email + ", " + nom);
+            System.out.println("Utilisateur mis a jour : " + id + ", " + email + ", " + nom);
         } catch (SQLException e) {
             System.err.println("Erreur lors de la mise à jour de l'utilisateur : " + e.getMessage());
         }

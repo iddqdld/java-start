@@ -112,7 +112,7 @@ public class App extends Application {
         userListView.getItems().clear();
         
         if (users == null || users.isEmpty()) {
-            userListView.getItems().add("Aucun utilisateur trouvé");
+            userListView.getItems().add("Aucun utilisateur trouve");
             return;
         }
 
